@@ -1,4 +1,4 @@
-name: Build Expo APK
+name: Build Android APK
 
 on: [push]
 
@@ -14,6 +14,11 @@ jobs:
         with:
           node-version: 18
 
+      - name: Force npm and remove yarn lock if exists
+        run: |
+          rm -f yarn.lock
+          npm install -g npm@latest
+
       - name: Setup Expo and EAS
         uses: expo/expo-github-action@v8
         with:
@@ -22,7 +27,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build on EAS
         run: eas build --platform android --profile preview --non-interactive

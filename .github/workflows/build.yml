@@ -14,13 +14,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Setup Expo
-        uses: expo/expo-github-action@v8
-        with:
-          expo-version: latest
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
 
       - name: Install dependencies
         run: npm install --force
 
       - name: Build Android APK
-        run: npx eas-cli build --platform android --profile preview --non-interactive
+        run: eas build --platform android --profile preview --non-interactive

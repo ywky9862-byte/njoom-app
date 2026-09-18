@@ -5,6 +5,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,7 +19,5 @@ jobs:
       - name: Install EAS CLI Globally
         run: npm install -g eas-cli
 
-      - name: Authenticate and Build on EAS
+      - name: Build on EAS Cloud
         run: eas build --platform android --profile preview --non-interactive
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}

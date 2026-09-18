@@ -13,7 +13,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
 
       - name: Setup Expo
         uses: expo/expo-github-action@v8
@@ -21,7 +20,7 @@ jobs:
           expo-version: latest
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps --no-package-lock
+        run: npm install --force
 
       - name: Build Android APK
         run: npx eas-cli build --platform android --profile preview --non-interactive

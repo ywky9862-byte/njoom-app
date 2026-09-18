@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "تطبيق نجوم",
+    "slug": "njoom-app",
+    "version": "1.0.0",
+    "android": {
+      "package": "com.njoom.app"
+    }
+  }
+}
